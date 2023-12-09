@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Mobile Number Form</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #form-container {
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px; /* Adjust padding to make the button larger */
+      background-color: blue; /* Set the background color to blue */
+      color: white; /* Set text color to white */
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: darkblue; /* Change background color on hover */
+    }
+  </style>
+</head>
+<body>
+
+<div id="form-container">
+  <h2>Enter Parent Mobile Number</h2>
+  <form onsubmit="submitForm(event)">
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="tel" id="mobileNumber" name="mobileNumber" required pattern="[0-9]{10}">
+    <br>
+    <button type="submit">Chat on WhatsApp</button>
+  </form>
+</div>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    var mobileNumber = document.getElementById("mobileNumber").value;
+    // alert("Submitted Mobile Number: " + mobileNumber);
+    var messageText = 'How to get Amazon internship step by step'; // Replace with your desired message
+
+    // Construct the WhatsApp API link
+    var whatsappLink = 'https://api.whatsapp.com/send/?phone=' + mobileNumber + '&text=' + encodeURIComponent(messageText);
+
+    // Open the link in a new tab
+    window.open(whatsappLink, '_blank');
+
+    // For demonstration purposes, log a message in the console
+    console.log("WhatsApp link opened!");
+    // You can add further logic here, such as making an AJAX request to a server, etc.
+  }
+</script>
+
+</body>
+</html>
